@@ -1,0 +1,11 @@
+{
+  "name": "api接口文档",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lipengzhou/shop-api-doc.git",
+  "author": "lipengzhou <lpzmail@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "doc": "i5ting_toc"
+  }
+}

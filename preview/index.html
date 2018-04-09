@@ -1,7 +1,7 @@
 <html>
   <head>
 	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>i5ting_ztree_toc:api</title>
+    <title>i5ting_ztree_toc:README</title>
 		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
 		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
@@ -65,13 +65,88 @@
 				</div>
         <div id='readme' style='width:70%;margin-left:20%;'>
           	<article class='markdown-body'>
-            	<h1 id="api">api</h1>
+            	<h1 id="-api-">电商管理后台 API 接口文档</h1>
+<h2 id="api-v1-">API V1 接口说明</h2>
 <ul>
-<li>基准路径：<a href="http://47.96.21.88:8082/api/private/v1/">http://47.96.21.88:8082/api/private/v1/</a></li>
+<li>接口基准地址：<code>http://localhost:8888/api/private/v1/</code></li>
+<li>服务端已开启 CORS 跨域支持</li>
+<li>API V1 认证统一使用 Token 认证</li>
+<li>需要授权的 API ，必须在请求头中使用 <code>Authorization</code> 字段提供 <code>token</code> 令牌</li>
+<li>使用 HTTP Status Code 标识状态</li>
+<li>数据返回格式统一使用 JSON</li>
 </ul>
-<blockquote>
-<p>除了登录接口，其他所有接口请求头必须设置为 Authorization=token (token 为登录成功后服务器返回的认证 token)</p>
-</blockquote>
+<h3 id="-">支持的请求方法</h3>
+<ul>
+<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
+<li>POST（CREATE）：在服务器新建一个资源。</li>
+<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
+<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
+<li>DELETE（DELETE）：从服务器删除资源。</li>
+<li>HEAD：获取资源的元数据。</li>
+<li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</li>
+</ul>
+<h3 id="-">通用返回状态说明</h3>
+<table>
+<thead>
+<tr>
+<th><em>状态码</em></th>
+<th><em>含义</em></th>
+<th><em>说明</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功</td>
+</tr>
+<tr>
+<td>201</td>
+<td>CREATED</td>
+<td>创建成功</td>
+</tr>
+<tr>
+<td>204</td>
+<td>DELETED</td>
+<td>删除成功</td>
+</tr>
+<tr>
+<td>400</td>
+<td>BAD REQUEST</td>
+<td>请求的地址不存在或者包含不支持的参数</td>
+</tr>
+<tr>
+<td>401</td>
+<td>UNAUTHORIZED</td>
+<td>未授权</td>
+</tr>
+<tr>
+<td>403</td>
+<td>FORBIDDEN</td>
+<td>被禁止访问</td>
+</tr>
+<tr>
+<td>404</td>
+<td>NOT FOUND</td>
+<td>请求的资源不存在</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocesable entity</td>
+<td>[POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误</td>
+</tr>
+<tr>
+<td>500</td>
+<td>INTERNAL SERVER ERROR</td>
+<td>内部错误</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
 <h2 id="-">登录</h2>
 <h3 id="-">登录验证接口</h3>
 <ul>
